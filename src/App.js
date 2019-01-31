@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 export default class App extends Component {
     
     state = {
-        users: []
+        users: {
+            people:[]
+        }
     }
 
     componentDidMount(){
         fetch('http://api.open-notify.org/astros.json')
         .then(res => res.json())
         .then(users => this.setState({
-            users: users.people}))
+        users: users}))
     }
 
 
@@ -20,7 +22,7 @@ export default class App extends Component {
             
             <div>
 
-                {this.state.users.map( (person) => person.name)}
+                {this.state.users.people.map( (person) => person.name)}
             
             </div>
         )
